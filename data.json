@@ -1,7 +1,7 @@
 {
   "summaries": [
-    {"title":"ملخص رياضيات 1","link":"https://example.com/math1.pdf"},
-    {"title":"ملخص فيزياء 1","link":"https://example.com/physics1.pdf"}
+    {"title":"math","link":"https://www.youtube.com/watch?v=e1vDgTrF3w8&list=RD7Ymbmn1XYOk&index=27"},
+    
   ],
   "books": [],
   "projects": [],
@@ -10,3 +10,4 @@
   "announcements": [],
   "whiteboards": []
 }
+
