@@ -14,24 +14,23 @@
   --muted:#6b7280;
 }
 *{box-sizing:border-box}
-body { font-family: 'Cairo', sans-serif; margin:0; padding:0; background: var(--bg); color:#111827; }
-header { background: linear-gradient(135deg,var(--blue-1),var(--blue-2)); color:white; text-align:center; padding:28px 12px; border-bottom-left-radius:26px; border-bottom-right-radius:26px; }
+body { font-family: 'Cairo', sans-serif; margin:0; padding:0; background: var(--bg); color:#111827; display:flex; flex-direction:column; align-items:center; }
+header { background: linear-gradient(135deg,var(--blue-1),var(--blue-2)); color:white; text-align:center; padding:28px 12px; border-bottom-left-radius:26px; border-bottom-right-radius:26px; width:100%; }
 header h1{margin:0;font-size:1.8rem}
 header p{margin:6px 0 0;font-size:0.95rem;opacity:0.95}
-nav{display:flex;justify-content:center;gap:10px;padding:12px;margin-top:-18px; flex-wrap: wrap;}
-.nav-link{background:var(--card);padding:10px 16px;border-radius:12px;box-shadow:0 4px 10px rgba(2,6,23,0.06);text-decoration:none;color:var(--blue-1);font-weight:600}
-.container{max-width:980px;margin:26px auto;padding:0 16px}
-.grid{display:grid;grid-template-columns:1fr;gap:18px}
-.card{background:var(--card);border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(2,6,23,0.06);text-align:center}
+nav{display:flex;justify-content:center;gap:10px;padding:12px;margin-top:-18px; flex-wrap: wrap; width:100%; max-width:980px;}
+.nav-link{background:var(--card);padding:10px 16px;border-radius:12px;box-shadow:0 4px 10px rgba(2,6,23,0.06);text-decoration:none;color:var(--blue-1);font-weight:600; text-align:center;}
+.container{max-width:980px;margin:26px auto;padding:0 16px;width:100%;}
+.card{background:var(--card);border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(2,6,23,0.06); margin-bottom:16px;}
 h2{color:var(--blue-1);margin:0 0 12px;padding-right:8px;border-right:4px solid var(--blue-2);display:inline-block}
 ul{list-style:none;padding:0;margin:0}
-li.item{background:#fbfdff;padding:12px;border-radius:10px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center; flex-wrap:wrap}
+li.item{background:#fbfdff;padding:12px;border-radius:10px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;word-break: break-word;}
 .muted{color:var(--muted);font-size:0.95rem}
+footer{text-align:center;padding:18px;margin-top:30px;color:white;background:linear-gradient(135deg,var(--blue-1),var(--blue-2));border-top-left-radius:18px;border-top-right-radius:18px;width:100%;}
 @media (max-width:900px){
-  .grid{grid-template-columns:1fr}
-  .nav-link{font-size:14px}
+  nav{flex-direction:column;align-items:center;}
+  .nav-link{font-size:14px; width:90%;}
 }
-a{color:#0066ff; text-decoration:underline;}
 </style>
 </head>
 <body>
@@ -49,113 +48,95 @@ a{color:#0066ff; text-decoration:underline;}
 <a class="nav-link" href="#whiteboards">صور السبورات</a>
 </nav>
 <div class="container">
-<div class="grid">
   <section id="summaries" class="card">
     <h2>📑 الملخصات</h2>
     <ul id="summariesList"></ul>
-    <p class="muted" id="noSummariesMsg">لا يوجد ملخصات مضافة حتى الآن.</p>
   </section>
   <section id="books" class="card">
     <h2>📚 الكتب</h2>
     <ul id="booksList"></ul>
-    <p class="muted" id="noBooksMsg">لا توجد كتب مضافة حتى الآن.</p>
   </section>
   <section id="projects" class="card">
     <h2>🛠 المشاريع</h2>
     <ul id="projectsList"></ul>
-    <p class="muted" id="noProjectsMsg">لا توجد مشاريع مضافة حتى الآن.</p>
   </section>
   <section id="videos" class="card">
     <h2>🎥 الشروحات</h2>
     <ul id="videosList"></ul>
-    <p class="muted" id="noVideosMsg">لا توجد شروحات مضافة حتى الآن.</p>
   </section>
   <section id="courses" class="card">
     <h2>🎓 الكورسات</h2>
     <ul id="coursesList"></ul>
-    <p class="muted" id="noCoursesMsg">لا توجد كورسات مضافة حتى الآن.</p>
   </section>
   <section id="announcements" class="card">
     <h2>📢 الإعلانات</h2>
     <ul id="announcementsList"></ul>
-    <p class="muted" id="noAnnouncementsMsg">لا توجد إعلانات مضافة حتى الآن.</p>
   </section>
   <section id="whiteboards" class="card">
     <h2>🖼 صور السبورات</h2>
     <ul id="whiteboardsList"></ul>
-    <p class="muted" id="noWhiteboardsMsg">لا توجد صور سبورات مضافة حتى الآن.</p>
   </section>
-</div>
 </div>
 <footer>
 © 2025 مكتبة دفعة ميكاترونكس
 </footer>
 
 <script>
-const lists={
-  summaries:document.getElementById('summariesList'),
-  books:document.getElementById('booksList'),
-  projects:document.getElementById('projectsList'),
-  videos:document.getElementById('videosList'),
-  courses:document.getElementById('coursesList'),
-  announcements:document.getElementById('announcementsList'),
-  whiteboards:document.getElementById('whiteboardsList')
+const lists = {
+  summaries: document.getElementById('summariesList'),
+  books: document.getElementById('booksList'),
+  projects: document.getElementById('projectsList'),
+  videos: document.getElementById('videosList'),
+  courses: document.getElementById('coursesList'),
+  announcements: document.getElementById('announcementsList'),
+  whiteboards: document.getElementById('whiteboardsList')
 };
 
-const noContentMsgs={
-  summaries:document.getElementById('noSummariesMsg'),
-  books:document.getElementById('noBooksMsg'),
-  projects:document.getElementById('noProjectsMsg'),
-  videos:document.getElementById('noVideosMsg'),
-  courses:document.getElementById('noCoursesMsg'),
-  announcements:document.getElementById('noAnnouncementsMsg'),
-  whiteboards:document.getElementById('noWhiteboardsMsg')
-};
+let contentData = {};
 
-// جلب البيانات من data.json
-async function loadContent(){
-  try{
-    const res = await fetch('data.json');
-    const data = await res.json();
-    renderContent(data);
-  } catch(err){
-    console.error('فشل تحميل البيانات:', err);
-  }
-}
+fetch('data.json')
+  .then(res => res.json())
+  .then(data => {
+    contentData = data;
+    renderContent();
+  })
+  .catch(err => console.error('فشل تحميل البيانات:', err));
 
-// عرض المحتوى
-function renderContent(data){
-  for(const key in lists){
-    const list=lists[key];
-    list.innerHTML='';
-    const items=data[key];
-    if(!items || items.length===0){
-      noContentMsgs[key].style.display='block';
+function renderContent() {
+  for (const key in lists) {
+    const list = lists[key];
+    list.innerHTML = '';
+    const items = contentData[key] || [];
+    if (items.length === 0) {
+      const p = document.createElement('p');
+      p.className = 'muted';
+      p.textContent = 'لا يوجد محتوى مضاف حتى الآن.';
+      list.parentElement.appendChild(p);
     } else {
-      noContentMsgs[key].style.display='none';
-      items.forEach(item=>{
-        const li=document.createElement('li');
-        li.className='item';
-        if(item.link && item.link.trim()!==''){
-          const a=document.createElement('a');
-          a.href=item.link;
-          a.target='_blank';
-          a.textContent=item.title;
+      items.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'item';
+        if (item.link && item.link.trim() !== '') {
+          const a = document.createElement('a');
+          a.href = item.link;
+          a.target = '_blank';
+          a.textContent = item.title;
+          a.style.color = '#0066ff';
+          a.style.textDecoration = 'underline';
           li.appendChild(a);
         } else {
-          const span=document.createElement('span');
-          span.textContent=item.title;
-          li.appendChild(span);
+          li.textContent = item.title;
         }
         list.appendChild(li);
       });
     }
   }
 }
-
-loadContent();
 </script>
 </body>
 </html>
+
+
+
 
 
