@@ -82,6 +82,19 @@ footer{text-align:center;padding:18px;margin-top:30px;color:white;background:lin
 </footer>
 
 <script>
+// المحتوى موجود مباشرة هنا
+let contentData = {
+  summaries: [
+    { title: "math", link: "https://www.youtube.com/watch?v=e1vDgTrF3w8" }
+  ],
+  books: [],
+  projects: [],
+  videos: [],
+  courses: [],
+  announcements: [],
+  whiteboards: []
+};
+
 const lists = {
   summaries: document.getElementById('summariesList'),
   books: document.getElementById('booksList'),
@@ -92,37 +105,27 @@ const lists = {
   whiteboards: document.getElementById('whiteboardsList')
 };
 
-let contentData = {};
-
-fetch('data.json')
-  .then(res => res.json())
-  .then(data => {
-    contentData = data;
-    renderContent();
-  })
-  .catch(err => console.error('فشل تحميل البيانات:', err));
-
 function renderContent() {
   for (const key in lists) {
     const list = lists[key];
     list.innerHTML = '';
     const items = contentData[key] || [];
-    if (items.length === 0) {
+    if(items.length === 0){
       const p = document.createElement('p');
       p.className = 'muted';
       p.textContent = 'لا يوجد محتوى مضاف حتى الآن.';
-      list.parentElement.appendChild(p);
+      list.appendChild(p);
     } else {
       items.forEach(item => {
         const li = document.createElement('li');
         li.className = 'item';
-        if (item.link && item.link.trim() !== '') {
+        if(item.link && item.link.trim()!==''){
           const a = document.createElement('a');
           a.href = item.link;
           a.target = '_blank';
           a.textContent = item.title;
-          a.style.color = '#0066ff';
-          a.style.textDecoration = 'underline';
+          a.style.color='#0066ff';
+          a.style.textDecoration='underline';
           li.appendChild(a);
         } else {
           li.textContent = item.title;
@@ -132,9 +135,13 @@ function renderContent() {
     }
   }
 }
+
+renderContent();
 </script>
 </body>
 </html>
+
+
 
 
 
