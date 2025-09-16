@@ -2,11 +2,23 @@
   "summaries": [
     {"title":"math","link":"https://www.youtube.com/watch?v=e1vDgTrF3w8&list=RD7Ymbmn1XYOk&index=27"}
   ],
-  "books": [],
-  "projects": [],
-  "videos": [],
-  "courses": [],
-  "announcements": [],
-  "whiteboards": []
+  "books": [
+    {"title":"Physics Book","link":"https://example.com/physics.pdf"}
+  ],
+  "projects": [
+    {"title":"Robot Arm","link":"https://example.com/robot-arm.pdf"}
+  ],
+  "videos": [
+    {"title":"Mechatronics Tutorial","link":"https://youtube.com/example"}
+  ],
+  "courses": [
+    {"title":"Electronics Course","link":"https://example.com/electronics"}
+  ],
+  "announcements": [
+    {"title":"Exam on 20 Sept","link":""}
+  ],
+  "whiteboards": [
+    {"title":"Board 1","link":"https://example.com/board1.jpg"}
+  ]
 }
 
