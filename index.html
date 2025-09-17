@@ -15,11 +15,46 @@
 }
 *{box-sizing:border-box}
 body { font-family: 'Cairo', sans-serif; margin:0; padding:0; background: var(--bg); color:#111827; display:flex; flex-direction:column; align-items:center; }
+
+/* Splash */
+#splash {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: linear-gradient(135deg,var(--blue-1),var(--blue-2));
+  display:flex; justify-content:center; align-items:center; flex-direction:column;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+#splash h2 {
+  margin:0;
+  font-size:1.6rem;
+  color:white;
+  font-weight:700;
+  text-align:center;
+}
+#splash p {
+  margin-top:8px;
+  font-size:0.9rem;
+  color:white;
+  opacity:0.85;
+  text-align:center;
+}
+
+/* Header */
 header { background: linear-gradient(135deg,var(--blue-1),var(--blue-2)); color:white; text-align:center; padding:28px 12px; border-bottom-left-radius:26px; border-bottom-right-radius:26px; width:100%; }
 header h1{margin:0;font-size:1.8rem}
 header p{margin:6px 0 0;font-size:0.95rem;opacity:0.95}
+
+/* Navigation */
 nav{display:flex;justify-content:center;gap:10px;padding:12px;margin-top:-18px; flex-wrap: wrap; width:100%; max-width:980px;}
 .nav-link{background:var(--card);padding:10px 16px;border-radius:12px;box-shadow:0 4px 10px rgba(2,6,23,0.06);text-decoration:none;color:var(--blue-1);font-weight:600; text-align:center;}
+
+/* Search */
+.search-container { width: 100%; max-width: 980px; margin: 16px auto; text-align: center; }
+#siteSearch { width: 90%; max-width: 500px; padding: 10px 16px; border-radius: 12px; border: 1px solid #ccc; font-size: 1rem; outline: none; transition: 0.3s all;}
+#siteSearch:focus { border-color: #0066ff; box-shadow: 0 4px 10px rgba(0,102,255,0.3); }
+
+/* Container & Cards */
 .container{max-width:980px;margin:26px auto;padding:0 16px;width:100%;}
 .card{background:var(--card);border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(2,6,23,0.06); margin-bottom:16px;}
 h2{color:var(--blue-1);margin:0 0 12px;padding-right:8px;border-right:4px solid var(--blue-2);display:inline-block}
@@ -27,17 +62,42 @@ ul{list-style:none;padding:0;margin:0}
 li.item{background:#fbfdff;padding:12px;border-radius:10px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;word-break: break-word;}
 .muted{color:var(--muted);font-size:0.95rem}
 footer{text-align:center;padding:18px;margin-top:30px;color:white;background:linear-gradient(135deg,var(--blue-1),var(--blue-2));border-top-left-radius:18px;border-top-right-radius:18px;width:100%;}
+
+/* تحسين الملاءمة للموبايل */
 @media (max-width:900px){
   nav{flex-direction:column;align-items:center;}
   .nav-link{font-size:14px; width:90%;}
+  #siteSearch { width: 95%; }
+  .container { padding:0 12px; }
+  h2 { font-size:1.4rem; }
+  header h1 { font-size:1.6rem; }
+  header p { font-size:0.9rem; }
+  #splash h2 { font-size:1.4rem; }
+  #splash p { font-size:0.85rem; }
+}
+
+@media (max-width:500px){
+  #siteSearch { width: 90%; font-size:0.95rem; }
+  .nav-link { font-size:13px; padding:8px 12px; }
+  h2 { font-size:1.2rem; }
+  header h1 { font-size:1.4rem; }
+  header p { font-size:0.85rem; }
 }
 </style>
 </head>
 <body>
+
+<!-- Splash Screen -->
+<div id="splash">
+  <h2>أهلاً بك في مكتبة دفعة ميكاترونكس</h2>
+  <p>تم التصميم بواسطة MECHAFORCE</p>
+</div>
+
 <header>
 <h1>📘 مكتبة دفعة ميكاترونكس</h1>
 <p>كل المذكرات - الكتب - المشاريع - الشروحات في مكان واحد</p>
 </header>
+
 <nav>
 <a class="nav-link" href="#summaries">الملخصات</a>
 <a class="nav-link" href="#books">الكتب</a>
@@ -47,6 +107,12 @@ footer{text-align:center;padding:18px;margin-top:30px;color:white;background:lin
 <a class="nav-link" href="#announcements">الإعلانات</a>
 <a class="nav-link" href="#whiteboards">صور السبورات</a>
 </nav>
+
+<!-- Search Bar -->
+<div class="search-container">
+  <input type="text" id="siteSearch" placeholder="ابحث في المكتبة..." />
+</div>
+
 <div class="container">
   <section id="summaries" class="card">
     <h2>📑 الملخصات</h2>
@@ -77,23 +143,19 @@ footer{text-align:center;padding:18px;margin-top:30px;color:white;background:lin
     <ul id="whiteboardsList"></ul>
   </section>
 </div>
+
 <footer>
 © 2025 مكتبة دفعة ميكاترونكس
 </footer>
 
 <script>
-// المحتوى موجود مباشرة هنا
+// محتوى تجريبي
 let contentData = {
   summaries: [
     { title: "math", link: "https://www.youtube.com/watch?v=e1vDgTrF3w8" },
     { title: "math2", link: "https://www.youtube.com/watch?v=0wPtmS6CA60&list=RD7Ymbmn1XYOk&index=27" }
   ],
-  books: [],
-  projects: [],
-  videos: [],
-  courses: [],
-  announcements: [],
-  whiteboards: []
+  books: [], projects: [], videos: [], courses: [], announcements: [], whiteboards: []
 };
 
 const lists = {
@@ -106,41 +168,41 @@ const lists = {
   whiteboards: document.getElementById('whiteboardsList')
 };
 
-function renderContent() {
-  for (const key in lists) {
-    const list = lists[key];
-    list.innerHTML = '';
-    const items = contentData[key] || [];
-    if(items.length === 0){
-      const p = document.createElement('p');
-      p.className = 'muted';
-      p.textContent = 'لا يوجد محتوى مضاف حتى الآن.';
-      list.appendChild(p);
-    } else {
-      items.forEach(item => {
-        const li = document.createElement('li');
-        li.className = 'item';
-        if(item.link && item.link.trim()!==''){
-          const a = document.createElement('a');
-          a.href = item.link;
-          a.target = '_blank';
-          a.textContent = item.title;
-          a.style.color='#0066ff';
-          a.style.textDecoration='underline';
-          li.appendChild(a);
-        } else {
-          li.textContent = item.title;
-        }
-        list.appendChild(li);
-      });
-    }
-  }
+for(const key in contentData){
+  contentData[key].forEach(item => {
+    const li = document.createElement('li');
+    li.className = 'item';
+    li.innerHTML = `<span>${item.title}</span><a href="${item.link}" target="_blank">رابط</a>`;
+    lists[key].appendChild(li);
+  });
 }
 
-renderContent();
+// Search Functionality
+const searchInput = document.getElementById('siteSearch');
+searchInput.addEventListener('input', function() {
+  const query = this.value.toLowerCase();
+  for(const key in lists){
+    const items = lists[key].querySelectorAll('li.item');
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      item.style.display = text.includes(query) ? 'flex' : 'none';
+    });
+  }
+});
+
+// Splash hide after 3s
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('splash').style.opacity = '0';
+    setTimeout(()=>document.getElementById('splash').style.display='none',500);
+  }, 3000);
+});
 </script>
+
 </body>
 </html>
+
+
 
 
 
